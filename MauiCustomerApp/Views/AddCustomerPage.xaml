@@ -1,0 +1,17 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCustomerApp.Views.AddCustomerPage"
+             Title="Add Customer">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Entry Placeholder="Name" x:Name="NameEntry" />
+            <Entry Placeholder="Lastname" x:Name="LastnameEntry" />
+            <Entry Placeholder="Age" x:Name="AgeEntry" Keyboard="Numeric" />
+            <Entry Placeholder="Address" x:Name="AddressEntry" />
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Save" Clicked="OnSaveClicked" />
+                <Button Text="Cancel" Clicked="OnCancelClicked" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
