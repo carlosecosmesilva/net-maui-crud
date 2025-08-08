@@ -10,7 +10,21 @@ Um aplicativo .NET MAUI para gerenciamento de clientes utilizando o padrão MVVM
 -   ✅ Excluir clientes com confirmação
 -   ✅ Interface responsiva e moderna
 
-## 🏗️ Arquitetura
+## 🎬 Demonstração
+
+> **📺 [Clique aqui para assistir à demonstração completa](./videos/Crud%20-%20MAUI.mp4)**
+
+_Vídeo mostrando todas as funcionalidades CRUD do aplicativo em ação_
+
+### O que você verá no vídeo:
+
+-   ✅ **Listagem** de clientes na tela principal
+-   ✅ **Adição** de novos clientes com formulário
+-   ✅ **Edição** de clientes existentes
+-   ✅ **Exclusão** com confirmação de segurança
+-   ✅ **Interface** responsiva e moderna
+
+## �🏗️ Arquitetura
 
 O projeto segue os princípios de Clean Architecture e utiliza:
 
