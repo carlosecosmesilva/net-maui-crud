@@ -8,12 +8,12 @@ namespace MauiCustomerApp.ViewModels;
 
 public class MainViewModel : BindableObject
 {
-    #region Variaveis
+    #region Variables
     private readonly CustomerService _service;
     private Customer? _selectedCustomer;
     #endregion
 
-    #region Propriedades
+    #region Props
     public ObservableCollection<Customer> Customers { get; set; } = new();
 
     public Customer? SelectedCustomer
@@ -27,14 +27,14 @@ public class MainViewModel : BindableObject
     }
     #endregion
 
-    #region Comandos
+    #region Command
     public ICommand LoadCommand { get; }
     public ICommand AddCommand { get; }
     public ICommand EditCommand { get; }
     public ICommand DeleteCommand { get; }
     #endregion
 
-    #region Construtor
+    #region Constructor
     public MainViewModel(CustomerService service)
     {
         _service = service;
@@ -48,7 +48,7 @@ public class MainViewModel : BindableObject
     }
     #endregion
 
-    #region Métodos
+    #region Methods
     public async Task LoadAsync()
     {
         var list = await _service.GetAllAsync();
@@ -67,6 +67,10 @@ public class MainViewModel : BindableObject
         {
             var addPage = new AddCustomerPage(_service);
             addPage.CustomerAdded += async (s, e) => await LoadAsync();
+
+            // Configurar janela modal centralizada
+            ConfigureModalWindow(addPage, "Adicionar Cliente", 500, 700);
+
             await mainPage.Navigation.PushModalAsync(addPage);
         }
     }
@@ -80,8 +84,34 @@ public class MainViewModel : BindableObject
         {
             var editPage = new EditCustomerPage(_service, SelectedCustomer);
             editPage.CustomerUpdated += async (s, e) => await LoadAsync();
+
+            // Configurar janela modal centralizada
+            ConfigureModalWindow(editPage, "Editar Cliente", 500, 700);
+
             await mainPage.Navigation.PushModalAsync(editPage);
         }
+    }
+
+    private void ConfigureModalWindow(ContentPage page, string title, double width, double height)
+    {
+        page.Title = title;
+
+#if WINDOWS
+        page.Loaded += (s, e) =>
+        {
+            if (page.Handler?.PlatformView is Microsoft.UI.Xaml.FrameworkElement element)
+            {
+                if (element.XamlRoot?.Content is Microsoft.UI.Xaml.FrameworkElement rootElement)
+                {
+                    // Centralizar a janela modal
+                    element.Width = width;
+                    element.Height = height;
+                    element.HorizontalAlignment = Microsoft.UI.Xaml.HorizontalAlignment.Center;
+                    element.VerticalAlignment = Microsoft.UI.Xaml.VerticalAlignment.Center;
+                }
+            }
+        };
+#endif
     }
 
     private async Task OnDelete()
@@ -92,7 +122,7 @@ public class MainViewModel : BindableObject
         if (mainPage != null)
         {
             bool confirm = await mainPage.DisplayAlert(
-                "Confirm", $"Delete {SelectedCustomer.Name}?", "Yes", "No");
+                "Excluir Cadastro", $"Excluir {SelectedCustomer.Name}?", "Sim", "Não");
 
             if (confirm)
             {

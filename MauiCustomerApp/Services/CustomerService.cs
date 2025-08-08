@@ -6,13 +6,18 @@ namespace MauiCustomerApp.Services;
 
 public class CustomerService
 {
+    #region Variables
     private readonly AppDbContext _context;
+    #endregion
 
+    #region Constructor
     public CustomerService(AppDbContext context)
     {
         _context = context;
     }
+    #endregion
 
+    #region Methods
     public async Task<List<Customer>> GetAllAsync()
     {
         return await _context.Customers
@@ -37,4 +42,5 @@ public class CustomerService
         _context.Customers.Remove(customer);
         await _context.SaveChangesAsync();
     }
+    #endregion
 }

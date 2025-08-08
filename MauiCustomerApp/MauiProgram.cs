@@ -3,6 +3,7 @@ using MauiCustomerApp.Services;
 using MauiCustomerApp.ViewModels;
 using MauiCustomerApp.Views;
 using Microsoft.EntityFrameworkCore;
+using CommunityToolkit.Maui;
 
 namespace MauiCustomerApp;
 
@@ -13,6 +14,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

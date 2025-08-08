@@ -1,14 +1,18 @@
 using MauiCustomerApp.Models;
 using MauiCustomerApp.Services;
+using Windows.UI.Popups;
 
 namespace MauiCustomerApp.Views;
 
 public partial class EditCustomerPage : ContentPage
 {
+    #region Variables
     private readonly CustomerService _service;
     private Customer _customer;
     public event EventHandler? CustomerUpdated;
+    #endregion
 
+    #region Constructor
     public EditCustomerPage(CustomerService service, Customer selectedCustomer)
     {
         InitializeComponent();
@@ -18,7 +22,9 @@ public partial class EditCustomerPage : ContentPage
         // Carrega os dados do cliente nos campos
         LoadCustomerData();
     }
+    #endregion
 
+    #region Methods
     private void LoadCustomerData()
     {
         NameEntry.Text = _customer.Name;
@@ -27,14 +33,46 @@ public partial class EditCustomerPage : ContentPage
         AddressEntry.Text = _customer.Address;
     }
 
+    private bool TryValidateCustomerInput(out int age, out string errorMessage)
+    {
+        errorMessage = string.Empty;
+        age = 0;
+
+        if (string.IsNullOrWhiteSpace(NameEntry.Text))
+        {
+            errorMessage = "O nome é obrigatório.";
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(LastnameEntry.Text))
+        {
+            errorMessage = "O endereço é obrigatório.";
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(AddressEntry.Text))
+        {
+            errorMessage = "O endereço é obrigatório.";
+            return false;
+        }
+
+        if (!int.TryParse(AgeEntry.Text, out age))
+        {
+            errorMessage = "A idade deve ser um número válido.";
+            return false;
+        }
+
+        return true;
+    }
+    #endregion
+
+    #region Events
+
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(NameEntry.Text) ||
-            string.IsNullOrWhiteSpace(LastnameEntry.Text) ||
-            !int.TryParse(AgeEntry.Text, out int age) ||
-            string.IsNullOrWhiteSpace(AddressEntry.Text))
+        if (!TryValidateCustomerInput(out int age, out string errorMessage))
         {
-            await DisplayAlert("Error", "Please fill all fields correctly.", "OK");
+            await DisplayAlert("Erro", errorMessage, "OK");
             return;
         }
 
@@ -52,4 +90,5 @@ public partial class EditCustomerPage : ContentPage
     {
         await Navigation.PopModalAsync();
     }
+    #endregion
 }

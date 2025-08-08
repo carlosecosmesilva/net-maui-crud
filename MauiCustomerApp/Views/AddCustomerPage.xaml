@@ -1,17 +1,216 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiCustomerApp.Views.AddCustomerPage"
-             Title="Add Customer">
+             Title="Adicionar Cliente"
+             BackgroundColor="#F8F9FA">
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Entry Placeholder="Name" x:Name="NameEntry" />
-            <Entry Placeholder="Lastname" x:Name="LastnameEntry" />
-            <Entry Placeholder="Age" x:Name="AgeEntry" Keyboard="Numeric" />
-            <Entry Placeholder="Address" x:Name="AddressEntry" />
-            <HorizontalStackLayout Spacing="10">
-                <Button Text="Save" Clicked="OnSaveClicked" />
-                <Button Text="Cancel" Clicked="OnCancelClicked" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+        <Grid Padding="20"
+              RowDefinitions="Auto,*,Auto">
+
+            <!-- Header -->
+            <Border Grid.Row="0"
+                    BackgroundColor="White"
+                    Stroke="#E9ECEF"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20"
+                    Margin="0,0,0,20">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Border Grid.Column="0"
+                            BackgroundColor="#28A745"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 30"
+                            WidthRequest="60"
+                            HeightRequest="60">
+                        <Label Text="👤"
+                               FontSize="28"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1"
+                                         Margin="15,0,0,0"
+                                         VerticalOptions="Center"
+                                         Spacing="4">
+                        <Label Text="Novo Cliente"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#212529"/>
+                        <Label Text="Preencha os dados abaixo"
+                               FontSize="14"
+                               TextColor="#6C757D"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <!-- Formulário -->
+            <Border Grid.Row="1"
+                    BackgroundColor="White"
+                    Stroke="#E9ECEF"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="25"
+                    Margin="0,0,0,20">
+
+                <VerticalStackLayout Spacing="20">
+                    <!-- Campo Nome -->
+                    <VerticalStackLayout Spacing="8">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="👤"
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                            <Label Text="Nome *"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#495057"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#F8F9FA"
+                                Stroke="#DEE2E6"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="0">
+                            <Entry x:Name="NameEntry"
+                                   Placeholder="Digite o nome"
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="#ADB5BD"
+                                   TextColor="#212529"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Campo Sobrenome -->
+                    <VerticalStackLayout Spacing="8">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="📝"
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                            <Label Text="Sobrenome *"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#495057"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#F8F9FA"
+                                Stroke="#DEE2E6"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="0">
+                            <Entry x:Name="LastnameEntry"
+                                   Placeholder="Digite o sobrenome"
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="#ADB5BD"
+                                   TextColor="#212529"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Campo Idade -->
+                    <VerticalStackLayout Spacing="8">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="🎂"
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                            <Label Text="Idade *"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#495057"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#F8F9FA"
+                                Stroke="#DEE2E6"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="0">
+                            <Entry x:Name="AgeEntry"
+                                   Placeholder="Digite a idade"
+                                   Keyboard="Numeric"
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="#ADB5BD"
+                                   TextColor="#212529"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Campo Endereço -->
+                    <VerticalStackLayout Spacing="8">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="📍"
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                            <Label Text="Endereço *"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#495057"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <Border BackgroundColor="#F8F9FA"
+                                Stroke="#DEE2E6"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="0">
+                            <Entry x:Name="AddressEntry"
+                                   Placeholder="Digite o endereço completo"
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="#ADB5BD"
+                                   TextColor="#212529"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Botões -->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="15">
+                <!-- Botão Cancelar -->
+                <Border Grid.Column="0"
+                        BackgroundColor="#6C757D"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 12"
+                        HeightRequest="50">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCancelClicked"/>
+                    </Border.GestureRecognizers>
+
+                    <HorizontalStackLayout Spacing="8"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center">
+                        <Label Text="❌"
+                               FontSize="16"
+                               TextColor="White"/>
+                        <Label Text="Cancelar"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Botão Salvar -->
+                <Border Grid.Column="1"
+                        BackgroundColor="#28A745"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 12"
+                        HeightRequest="50">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSaveClicked"/>
+                    </Border.GestureRecognizers>
+
+                    <HorizontalStackLayout Spacing="8"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center">
+                        <Label Text="💾"
+                               FontSize="16"
+                               TextColor="White"/>
+                        <Label Text="Salvar"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </Grid>
+        </Grid>
     </ScrollView>
 </ContentPage>
