@@ -24,7 +24,7 @@ _Vídeo mostrando todas as funcionalidades CRUD do aplicativo em ação_
 -   ✅ **Exclusão** com confirmação de segurança
 -   ✅ **Interface** responsiva e moderna
 
-## �🏗️ Arquitetura
+## 🏗️ Arquitetura
 
 O projeto segue os princípios de Clean Architecture e utiliza:
 
