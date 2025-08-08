@@ -24,6 +24,23 @@ _Vídeo mostrando todas as funcionalidades CRUD do aplicativo em ação_
 -   ✅ **Exclusão** com confirmação de segurança
 -   ✅ **Interface** responsiva e moderna
 
+## 📸 Screenshots
+
+### Tela Principal - Lista de Clientes
+
+![Tela Principal](./images/Tela-Principal.png)
+_Tela principal com a lista de clientes, botões de ação (Add, Edit, Delete) e interface limpa_
+
+### Tela de Inclusão de Cliente
+
+![Tela de Inclusão](./images/Tela-Inclusao.png)
+_Modal para adicionar novo cliente com campos Name, Lastname, Age e Address_
+
+### Tela de Edição de Cliente
+
+![Tela de Edição](./images/Tela-Edicao.png)
+_Modal para editar cliente existente com dados pré-preenchidos e botões Save/Cancel_
+
 ## 🏗️ Arquitetura
 
 O projeto segue os princípios de Clean Architecture e utiliza:
